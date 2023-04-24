@@ -1,3 +1,4 @@
+import Card from "../../UI/Card/Card";
 const MEALS = [
   {
     id: "m1",
@@ -24,7 +25,9 @@ const AvailableMeals = () => {
 
   return (
     <section>
-      <ul>{mealsList}</ul>
+      <Card>
+        <ul>{mealsList}</ul>
+      </Card>
     </section>
   );
 };
