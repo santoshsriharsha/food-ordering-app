@@ -1,29 +1,31 @@
+import { useEffect, useState } from "react";
+import dbUrl from "../../../../assets/db";
 import Card from "../../UI/Card/Card";
 import MealItem from "../MealItem/MealItem";
 import classes from "./AvailableMeals.module.css";
-const MEALS = [
-  {
-    id: "m1",
-    name: "Dosa",
-    description: "Dosa",
-    price: 40,
-  },
-  {
-    id: "m2",
-    name: "Idli",
-    description: "Idli",
-    price: 35,
-  },
-  {
-    id: "m3",
-    name: "Vada",
-    description: "Vada",
-    price: 40,
-  },
-];
 
 const AvailableMeals = () => {
-  const mealsList = MEALS.map((meal) => (
+  const [meals, setMeals] = useState([]);
+  useEffect(() => {
+    const fetchMeals = async () => {
+      const response = await fetch(dbUrl);
+      const data = await response.json();
+      const loadedMeals = [];
+      for (const key in data) {
+        loadedMeals.push({
+          id: key,
+          name: data[key].name,
+          description: data[key].description,
+          price: data[key].price,
+        });
+      }
+
+      setMeals(loadedMeals);
+    };
+
+    fetchMeals();
+  }, []);
+  const mealsList = meals.map((meal) => (
     <MealItem
       id={meal.id}
       key={meal.id}
