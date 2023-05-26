@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import dbUrl from "../../../../assets/db";
 import Card from "../../UI/Card/Card";
 import MealItem from "../MealItem/MealItem";
 import classes from "./AvailableMeals.module.css";
@@ -10,7 +9,7 @@ const AvailableMeals = () => {
   const [httpError, setHttpError] = useState(null);
   useEffect(() => {
     const fetchMeals = async () => {
-      const response = await fetch(dbUrl);
+      const response = await fetch("http://localhost:8080/meals");
 
       if (!response.ok) throw new Error();
       const data = await response.json();
