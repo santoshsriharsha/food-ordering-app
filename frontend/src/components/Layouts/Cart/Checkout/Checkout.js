@@ -2,7 +2,7 @@ import classes from "./Checkout.module.css";
 
 const Checkout = (props) => {
   return (
-    <form>
+    <form className={classes.form}>
       <div className={classes.control}>
         <label htmlFor="name">Name: </label>
         <input type="text" id="name" />
@@ -19,10 +19,12 @@ const Checkout = (props) => {
         <label htmlFor="pincode">Pincode: </label>
         <input type="text" id="pincode" />
       </div>
-      <button type="button" onClick={props.onClose}>
-        Cancel
-      </button>
-      <button>Confirm</button>
+      <div className={classes.actions}>
+        <button type="button" onClick={props.onClose}>
+          Cancel
+        </button>
+        <button className={classes.submit}>Confirm</button>
+      </div>
     </form>
   );
 };
