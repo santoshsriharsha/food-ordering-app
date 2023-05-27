@@ -20,6 +20,7 @@
   border-radius: 4px;
   width: 20rem;
   max-width: 100%;
+  margin: 0.2rem;
 }
 
 .actions {
@@ -52,6 +53,11 @@
 .actions .submit:hover,
 .actions .submit:active {
   background-color: #7a2706;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
 }
 
 .invalid label {
